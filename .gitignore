@@ -1,4 +1,4 @@
-Calibration_CPP/output/*
+Calibration_CPP/output
 
 Calibration_CPP/data/Lidar/example/
 
@@ -13,5 +13,5 @@ Calibration_CPP/tool2end/bin
 Calibration_CPP/lidar2car/lib/liblidar2car.a
 
 Calibration_Python/handEye/__pycache__
-Calibration_Python/input/*
+Calibration_Python/input
 Calibration_Python/output/*
