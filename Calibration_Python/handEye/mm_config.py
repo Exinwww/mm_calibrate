@@ -5,7 +5,7 @@ import numpy as np
 
 class MMConfig:
     def __init__(self) -> None:
-        with open('../robotParam/mm_param.yaml', 'r', encoding='utf-8') as f:
+        with open('mm_param.yaml', 'r', encoding='utf-8') as f:
             self.mm_param = yaml.safe_load(f)
         
         # print(self.mm_param)
