@@ -46,7 +46,7 @@ for attitude in attitudes:
     Ts.append(np.array(A_j))
 
 t = Tool_calibration.TCP(Ts)
-# saveTs(Ts, './data/Tool/tcp.txt')
+saveTs(Ts, './input/tcp.txt')
 
 # TCF
 print('################################')
@@ -65,7 +65,7 @@ for p in pos:
     A_j = puma.A(5, solution.q)
     Ts.append(np.array(A_j))
 t = Tool_calibration.TCF(Ts)
-# saveTs(Ts, './data/Tool/tcf.txt')
+saveTs(Ts, './input/tcf.txt')
 T_pos3 = sm.SE3(pos3) * sm.SE3.RPY(attitude)
 solution = puma.ikine_LM(T_pos3)
 print(solution)

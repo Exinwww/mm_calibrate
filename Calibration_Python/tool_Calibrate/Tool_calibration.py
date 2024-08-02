@@ -71,20 +71,33 @@ def TCF(Ts):
     R_BE, _ = HomogeneousMtr2Rt(Ts[2])
     R_ET = np.linalg.inv(R_BE) @ R_BT
 
-    print('Got R_ET:\n', R_ET)
-    return R_BT, R_ET
+    return R_ET
 
 def get_data():
     # 读取数据
-    raise NotImplementedError
+    data_tcp = []
+    with open('./input/tcp.txt', 'r') as f:
+        for line in f.readlines():
+            line = line.strip().split()
+            line = [float(x) for x in line]
+            data_tcp.append(np.array(line).reshape(4, 4))
+    
+    data_tcf = []
+    with open('./input/tcf.txt', 'r') as f:
+        for line in f.readlines():
+            line = line.strip().split()
+            line = [float(x) for x in line]
+            data_tcf.append(np.array(line).reshape(4, 4))
+    
+    return data_tcp, data_tcf
 
 if __name__ == "__main__":
     data_tcp, data_tcf = get_data()
-    EP_T = TCP(data_tcp)
-    R_ET = TCF(data_tcf)
+    t = TCP(data_tcp)
+    R = TCF(data_tcf)
     # 组合成齐次变换矩阵
     T = np.eye(4)
-    T[:3, :3] = R_ET
-    T[:3, 3] = EP_T
-    print('Final T:', T)
+    T[:3, :3] = R
+    T[:3, 3] = t.flatten()
+    print('result:\n', T)
     
